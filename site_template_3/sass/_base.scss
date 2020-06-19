@@ -1,0 +1,130 @@
+// ================================
+// カラー
+// ================================
+$color_white: #fafafa;
+$color_black: #333;
+// ================================
+// テキスト選択時のカラー
+// ================================
+::selection {
+  background: $color_black;
+  color: $color_white;
+}
+//Firefox
+::-moz-selection {
+  background: $color_black;
+  color: $color_white;
+}
+// ================================
+// ブレイクポイント
+// ================================
+$bp_XXL: 1600px;
+$bp_XL: 1024px;
+$bp_L: 768px;
+$bp_M: 640px;
+$bp_S: 420px;
+$bp_XS: 320px;
+@media only screen and (max-width: $bp_S) {
+}
+// ================================
+// フォント
+// ================================
+@font-face {
+  font-family: "tegaki";
+  src: url(/font/tegaki.ttf);
+}
+// ================================
+// リセット
+// ================================
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+p {
+  margin-bottom: 1em;
+}
+// ================================
+// ミックスイン
+// ================================
+@mixin position($position, $top, $right, $bottom, $left) {
+  position: $position;
+  @if $top != n {
+    top: $top;
+  }
+  @if $right != n {
+    right: $right;
+  }
+  @if $bottom != n {
+    bottom: $bottom;
+  }
+  @if $left != n {
+    left: $left;
+  }
+}
+// @include position(absolute, 0, n, n, 0);
+// ================================
+// エクステンド
+// ================================
+%Thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+// @extend %Thumbnail;
+// ================================
+// ベース
+// ================================
+body {
+  color: $color_black;
+  background: $color_white;
+  font-family: "Noto Sans JP", sans-serif; //ゴシック
+  font-family: "Noto Serif JP", serif; //明朝
+  a {
+    color: $color_black;
+    text-decoration: none;
+    transition: 0.3s;
+    &:link,
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color_black;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+// ================================
+// スニペット
+// ================================
+.youtube {
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+  iframe {
+    width: 100%;
+    height: 100%;
+    @include position(absolute, 0, 0, n, n);
+  }
+}
+.googlemap {
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+  iframe {
+    height: 100%;
+    width: 100%;
+    @include position(absolute, 0, 0, n, n);
+  }
+}
